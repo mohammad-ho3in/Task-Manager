@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Practice\OnePracticeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+Route::prefix('practice')->group(function(){
+   Route::get('/',function(){
+      return view('practice.index');
+   });
+   Route::resource('/practice1/task', OnePracticeController::class,['names'=>'practice1.task']);
 });
