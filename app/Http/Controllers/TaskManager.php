@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Practice;
+namespace App\Http\Controllers;
 
 use App\Models\Task;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class OnePracticeController extends Controller
+class TaskManager extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class OnePracticeController extends Controller
     public function index()
     {
       $tasks=Task::all();
-        return view('practice.practice1.index',compact('tasks'));
+        return view('task-manager.index',compact('tasks'));
     }
 
     /**
@@ -26,7 +26,7 @@ class OnePracticeController extends Controller
      */
     public function create()
     {
-      return view('practice.practice1.create');
+      return view('task-manager.create');
     }
 
     /**
@@ -42,7 +42,7 @@ class OnePracticeController extends Controller
      ]);
       $task=new Task;
       $task->create($request->all());
-      return redirect()->route('practice1.task.index')->with('success','تسک جدید با موفقیت اضافه شد');
+      return redirect()->route('task-manager.index')->with('success','تسک جدید با موفقیت اضافه شد');
     }
 
     /**
@@ -65,7 +65,7 @@ class OnePracticeController extends Controller
     public function edit($id)
     {
       $task=Task::find($id);
-      return view('practice.practice1.edit',compact('task'));
+      return view('task-manager.edit',compact('task'));
     }
 
     /**
@@ -83,7 +83,7 @@ class OnePracticeController extends Controller
      $task=Task::find($id);
      $task->name=$request->name;
      $task->save();
-        return redirect()->route('practice1.task.index')->with('success','با موفقیت ویرایش شد.');
+        return redirect()->route('task-manager.index')->with('success','با موفقیت ویرایش شد.');
     }
 
     /**
@@ -96,6 +96,6 @@ class OnePracticeController extends Controller
     {
       $task=Task::find($id);
       $task->delete();
-      return redirect()->route('practice1.task.index')->with('success','با موفقیت حذف شد.');
+      return redirect()->route('task-manager.index')->with('success','با موفقیت حذف شد.');
     }
 }

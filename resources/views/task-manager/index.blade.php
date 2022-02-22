@@ -1,4 +1,4 @@
-@extends('practice.layouts.master')
+@extends('task-manager.layouts.master')
 @php
 $title='وظیفه ها'
 @endphp
@@ -6,9 +6,9 @@ $title='وظیفه ها'
 <div class="container mt-3">
    <div class="row">
       <div class="col-12">
-         <a href="{{ route('practice1.task.create') }}" class="btn btn-sm btn-success">ایجاد وظیفه جدید</a>
+         <a href="{{ route('task-manager.create') }}" class="btn btn-sm btn-success">ایجاد وظیفه جدید</a>
          @if (Session::has('success'))
-         @include('practice.alert.toast.success')
+         @include('task-manager.alert.toast.success')
          @endif
          <table class="table">
             <thead>
@@ -24,9 +24,9 @@ $title='وظیفه ها'
                   <th scope="row">{{ ++$index }}</th>
                   <td>{{ $task->name }}</td>
                   <td class="d-flex">
-                     <a href="{{ route('practice1.task.edit', $task->id) }}"
+                     <a href="{{ route('task-manager.edit', $task->id) }}"
                         class="btn btn-sm btn-warning ms-2">ویرایش</a>
-                     <form action="{{ route('practice1.task.destroy',$task->id) }}" method="POST">
+                     <form action="{{ route('task-manager.destroy',$task->id) }}" method="POST">
                         @csrf
                         @method('delete')
                         <button class="btn btn-sm btn-danger me-2 delete">حذف</button>
@@ -51,6 +51,6 @@ $title='وظیفه ها'
          });
 </script>
 
-@include('practice.alert.sweet.delete-confirm',['className'=>'delete'])
+@include('task-manager.alert.sweet.delete-confirm',['className'=>'delete'])
 
 @endsection

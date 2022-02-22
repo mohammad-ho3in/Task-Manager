@@ -4,14 +4,14 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   @include('practice.layouts.head')
+   @include('task-manager.layouts.head')
    @yield('head-tag')
    <title>{{ $title }}</title>
    
 </head>
 <body>
    @yield('content')
-   @include('practice.layouts.script')
+   @include('task-manager.layouts.script')
    @yield('script')
 </body>
 </html>
